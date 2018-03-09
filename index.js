@@ -40,5 +40,7 @@ http.listen(port,()=>{
 let frameCount=0;
 const id = gameLoop.setGameLoop(delta=>{
     //console.log('Loop (Frame:%s, delta=%s)',frameCount++,delta);
-    upd.update(io,myBlocks);//the update step;
+    if(myBlocks.length>0){
+        upd.update(io,myBlocks);//the update step;
+    }
 },FRAME_TIME);
