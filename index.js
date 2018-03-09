@@ -3,7 +3,7 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const gameLoop = require('node-gameloop');
-const port = process.env.port || 30013;
+const port = process.env.PORT || 31313;
 
 const upd = require('./server/update');
 const Block = require('./server/Block.js');
