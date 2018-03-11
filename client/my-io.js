@@ -1,5 +1,6 @@
 var socket = io();
-socket.on('object',(objects)=>{
+socket.emit('new-player');
+socket.on('objects',(objects)=>{
     updateObject(objects);
     //console.log(object);
 });

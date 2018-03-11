@@ -9,6 +9,10 @@ module.exports = class Block {
         this.right = width;
         this.bottom = height;
         this.size = size;
+        const r = Math.round(Math.random()*255);
+        const g = Math.round(Math.random()*255);
+        const b = Math.round(Math.random()*255);
+        this.RGBcolor = `rgb(${r},${g},${b})`;
     }
     update() {
         this.checkCollisions();
@@ -33,5 +37,22 @@ module.exports = class Block {
             this.vy=this.vy*-1;
             this.y=this.bottom-this.size;
         }
+    }
+    getPositionData(){
+        const myBlock = {
+            x: this.x,
+            y: this.y,
+            size: this.size,
+        };
+        return myBlock;
+    }
+    getNewPlayer(){
+        const myBlock = {
+            color: this.RGBcolor,
+            x: this.x,
+            y: this.y,
+            size: this.size,
+        };
+        return myBlock;
     }
 };
