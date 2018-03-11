@@ -1,4 +1,4 @@
-module.exports = class Block {
+module.exports = class Bullet {
     constructor(width,height,size) {
         this.x = 0;
         this.y = 0;
