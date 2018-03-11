@@ -9,7 +9,7 @@ const upd = require('./server/update');
 const Tank = require('./server/Tank.js');
 
 //Game constants
-const FPS = 50;
+const FPS = 40;
 const FRAME_TIME = 1000/FPS;
 const CANVAS_W = 800;
 const CANVAS_H = 800;
@@ -42,7 +42,12 @@ io.on('connection',(socket)=>{
     });
 
     socket.on('bullet',()=>{
-
+        //console.log('newBullet');
+        const indexOfSocket = playerObjects.findIndex((el)=>{
+            return el.id == socket.player.id;
+        });
+        const newBullet = playerObjects[indexOfSocket].tank.makeNewBullet();
+        bulletObjects.push(newBullet);
     });
 
     socket.on('disconnect', ()=>{
@@ -64,6 +69,6 @@ const id = gameLoop.setGameLoop(delta=>{
     //console.log('Loop (Frame:%s, delta=%s)',frameCount++,delta);
     //console.log(playersConnected);
     if(playersConnected>0){
-        upd.update(io,playerObjects);//the update step;
+        upd.update(io,playerObjects,bulletObjects);//the update step;
     }
 },FRAME_TIME);

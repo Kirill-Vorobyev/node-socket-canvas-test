@@ -1,18 +1,14 @@
 module.exports = class Bullet {
-    constructor(width,height,size) {
-        this.x = 0;
-        this.y = 0;
-        this.vx = Math.round(Math.random()*6+2);
-        this.vy = Math.round(Math.random()*6+2);
+    constructor(x,y,vx,vy,width,height,size,color) {
+        this.x = x,this.y = y,this.vx = vx,this.vy=vy;
         this.top = 0;
         this.left = 0;
         this.right = width;
         this.bottom = height;
         this.size = size;
-        const r = Math.round(Math.random()*225);
-        const g = Math.round(Math.random()*225);
-        const b = Math.round(Math.random()*225);
-        this.RGBcolor = `rgb(${r},${g},${b})`;
+        this.RGBcolor = color;
+        this.bounces = 0,this.maxBounces = 2;
+        this.delete = false;
     }
     update() {
         this.checkCollisions();
@@ -24,18 +20,25 @@ module.exports = class Bullet {
         if(this.x<this.left){
             this.vx=this.vx*-1;
             this.x=this.left;
+            this.bounces++;
         }
         if(this.x>this.right-this.size){
             this.vx=this.vx*-1;
             this.x=this.right-this.size;
+            this.bounces++;
         }
         if(this.y<this.top){
             this.vy=this.vy*-1;
             this.y=this.top;
+            this.bounces++;
         }
         if(this.y>this.bottom-this.size){
             this.vy=this.vy*-1;
             this.y=this.bottom-this.size;
+            this.bounces++;
+        }
+        if(this.bounces>this.maxBounces){
+            this.delete = true;
         }
     }
     getPositionData(){
@@ -46,13 +49,12 @@ module.exports = class Bullet {
         };
         return myBlock;
     }
-    getNewPlayer(){
-        const myBlock = {
+    getObjectInfo(){
+        return {
             color: this.RGBcolor,
             x: this.x,
             y: this.y,
             size: this.size,
         };
-        return myBlock;
     }
 };

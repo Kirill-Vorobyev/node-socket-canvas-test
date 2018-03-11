@@ -1,11 +1,11 @@
 var socket = io();
 socket.emit('new-player');
-socket.on('objects',(objects)=>{
-    updateObject(objects);
+socket.on('objects',(tanks,bullets)=>{
+    updateObjects(tanks,bullets);
     //console.log(object);
 });
 
-document.addEventListener('keypress',(event)=>{
+document.addEventListener('keyup',(event)=>{
     const keyName = event.key;
     let myMove = {
         up: false,
@@ -25,5 +25,8 @@ document.addEventListener('keypress',(event)=>{
     }else if(keyName == 'd'){
         myMove.right = true;
         socket.emit('move',myMove);
+    }
+    if(keyName === ' '){
+        socket.emit('bullet');
     }
 });
