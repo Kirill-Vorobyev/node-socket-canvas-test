@@ -13,16 +13,16 @@ document.addEventListener('keypress',(event)=>{
         left: false,
         right: false
     };
-    if(keyName == 'ArrowUp'){
+    if(keyName == 'w'){
         myMove.up = true;
         socket.emit('move',myMove);
-    }else if(keyName == 'ArrowDown'){
+    }else if(keyName == 's'){
         myMove.down = true;
         socket.emit('move',myMove);
-    }else if(keyName == 'ArrowLeft'){
+    }else if(keyName == 'a'){
         myMove.left = true;
         socket.emit('move',myMove);
-    }else if(keyName == 'ArrowRight'){
+    }else if(keyName == 'd'){
         myMove.right = true;
         socket.emit('move',myMove);
     }
