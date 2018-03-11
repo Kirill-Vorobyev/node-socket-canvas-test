@@ -2,7 +2,7 @@ const Bullet = require('./Bullet');
 module.exports = class Tank {
     constructor(width,height,size) {
         //this.x = 0.0,this.y = 0.0,this.vx = 0.0,this.vy = 0.0,this.ax = 0.1,this.ay = 0.1,this.vx_max = 5.0,this.vy_max = 5.0;
-        this.x = 0,this.y = 0,this.vx = 20,this.vy = 20;
+        this.x = Math.round(Math.random()*width/20)*20,this.y = Math.round(Math.random()*height/20)*20,this.vx = 20,this.vy = 20;
         this.top = 0,this.left = 0,this.right = width,this.bottom = height;
         this.size = size;
         const r = Math.round(Math.random()*225);
@@ -25,7 +25,6 @@ module.exports = class Tank {
     update() {
         this.moveMe();
         this.checkCollisions();
-        //console.log(this.lastMove);
     }
     setMove(newMove) {
         this.move = newMove;
@@ -145,7 +144,7 @@ module.exports = class Tank {
         const bulletSize = 20;
         if(this.lastMove.up){
             return {
-                bullet: new Bullet(this.x+this.size/2-bulletSize/2,this.y-10,0,-velocity,this.right,this.bottom,20,this.RGBcolor)
+                bullet: new Bullet(this.x+this.size/2-bulletSize/2,this.y-30,0,-velocity,this.right,this.bottom,20,this.RGBcolor)
             };
         }else if(this.lastMove.down){
             return {
@@ -153,7 +152,7 @@ module.exports = class Tank {
             };
         }else if(this.lastMove.left){
             return {
-                bullet: new Bullet(this.x-10,this.y+this.size/2-bulletSize/2,-velocity,0,this.right,this.bottom,20,this.RGBcolor)
+                bullet: new Bullet(this.x-30,this.y+this.size/2-bulletSize/2,-velocity,0,this.right,this.bottom,20,this.RGBcolor)
             };
         }else if(this.lastMove.right){
             return {
@@ -169,11 +168,21 @@ module.exports = class Tank {
         };
     }
     getNewPlayer(){
+        let dir;
+        if(this.lastMove.up){
+            dir = 0;
+        }else if(this.lastMove.right){
+            dir = 1;
+        }else if(this.lastMove.down){
+            dir = 2;
+        }else if(this.lastMove.left){
+            dir = 3;
+        }
         return {
             color: this.RGBcolor,
             x: this.x,
             y: this.y,
-            size: this.size,
+            dir: dir
         };
     }
 };

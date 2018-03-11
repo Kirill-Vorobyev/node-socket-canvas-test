@@ -7,7 +7,7 @@ module.exports = class Bullet {
         this.bottom = height;
         this.size = size;
         this.RGBcolor = color;
-        this.bounces = 0,this.maxBounces = 2;
+        this.bounces = 0,this.maxBounces = 1;
         this.delete = false;
     }
     update() {
@@ -53,8 +53,7 @@ module.exports = class Bullet {
         return {
             color: this.RGBcolor,
             x: this.x,
-            y: this.y,
-            size: this.size,
+            y: this.y
         };
     }
 };

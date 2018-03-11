@@ -9,7 +9,7 @@ const upd = require('./server/update');
 const Tank = require('./server/Tank.js');
 
 //Game constants
-const FPS = 40;
+const FPS = 30;
 const FRAME_TIME = 1000/FPS;
 const CANVAS_W = 800;
 const CANVAS_H = 800;

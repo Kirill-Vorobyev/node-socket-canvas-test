@@ -1,3 +1,5 @@
+const Tank = require('./Tank');
+
 exports.update = (io,players,bullets) => {
     let myTanksToSend = [];
     let myBulletsToSend = [];
@@ -11,14 +13,24 @@ exports.update = (io,players,bullets) => {
         }
         for(let i=0;i<bullets.length;i++){
             //console.log(players[i].block);
+            bullets[i].bullet.update();
+
+            for(let p=0;p<players.length;p++){
+                if( bullets[i].bullet.x<players[p].tank.x+60 && 
+                    bullets[i].bullet.x>=players[p].tank.x   &&
+                    bullets[i].bullet.y<players[p].tank.y+60 && 
+                    bullets[i].bullet.y>=players[p].tank.y     ){
+                        bullets[i].bullet.delete = true;
+                        players[p].tank = new Tank(800,800,60);
+                }
+            }
+
             if(!bullets[i].bullet.delete){
-                bullets[i].bullet.update();
                 const myBullet = bullets[i].bullet.getObjectInfo();
                 myBulletsToSend = myBulletsToSend.concat(myBullet);
             }else{
-                bullets = bullets.splice(i,1);
+                bullets.splice(i,1);
             }
-            
         }
         io.emit('objects',myTanksToSend,myBulletsToSend);
     }
