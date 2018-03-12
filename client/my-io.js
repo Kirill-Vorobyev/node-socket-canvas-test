@@ -5,6 +5,12 @@ socket.on('objects',(tanks,bullets)=>{
     //console.log(object);
 });
 
+document.addEventListener('keydown',(event)=>{
+    if(event.key === ' '){
+        event.preventDefault();
+    }
+});
+
 document.addEventListener('keyup',(event)=>{
     const keyName = event.key;
     let myMove = {
