@@ -30,6 +30,7 @@ exports.update = (io,players,bullets) => {
                 myBulletsToSend = myBulletsToSend.concat(myBullet);
             }else{
                 bullets.splice(i,1);
+                //console.log(bullets.length);
             }
         }
         io.emit('objects',myTanksToSend,myBulletsToSend);

@@ -46,53 +46,6 @@ module.exports = class Tank {
             this.resetMove();
         }
     }
-    // moveMe(){
-    //     if(this.vx<this.vx_max && this.move.right){
-    //         this.vx+=this.ax;
-    //         console.log(this.vx);
-    //         this.vx = parseFloat(this.vx).toFixed(1);
-    //         console.log(this.vx);
-    //     }
-    //     if(Math.abs(this.vx)<this.vx_max && this.move.left){
-    //         this.vx-=this.ax;
-    //         this.vx = parseFloat(this.vx).toFixed(1);
-    //     }
-    //     if(this.vy<this.vy_max && this.move.down){
-    //         this.vy+=this.ay;
-    //         this.vy = parseFloat(this.vy).toFixed(1);
-    //     }
-    //     if(Math.abs(this.vy)<this.vy_max && this.move.up){
-    //         this.vy-=this.ay;
-    //         this.vy = parseFloat(this.vy).toFixed(1);
-    //     }
-    //     if(!this.move.up && !this.move.down){
-    //         if(this.vy>0){
-    //             this.vy-=this.ay;
-    //             this.vy = parseFloat(this.vy).toFixed(1);
-    //         }
-    //         if(this.vy<0){
-    //             this.vy+=this.ay;
-    //             this.vy = parseFloat(this.vy).toFixed(1);
-    //         }
-    //     }
-    //     if(!this.move.left && !this.move.right){
-    //         if(this.vx>0){
-    //             this.vx-=this.ax;
-    //             this.vx = parseFloat(this.vx).toFixed(1);
-    //         }
-    //         if(this.vx<0){
-    //             this.vx+=this.ax;
-    //             this.vx = parseFloat(this.vx).toFixed(1);
-    //         }
-    //     }
-    //     if(this.vy != 0){
-    //         this.y+=this.vy;
-    //     }
-    //     if(this.vx != 0){
-    //         this.x+=this.vx;
-    //     }
-    //     this.resetMove();
-    // }
     resetMove(){
         this.lastMove = {
             up: this.move.up,
@@ -121,24 +74,6 @@ module.exports = class Tank {
             this.y=this.bottom-this.size;
         }
     }
-    // checkCollisions() {
-    //     if(this.x<this.left){
-    //         this.vx=0;
-    //         this.x=this.left;
-    //     }
-    //     if(this.x>this.right-this.size){
-    //         this.vx=0;
-    //         this.x=this.right-this.size;
-    //     }
-    //     if(this.y<this.top){
-    //         this.vy=0;
-    //         this.y=this.top;
-    //     }
-    //     if(this.y>this.bottom-this.size){
-    //         this.vy=0;
-    //         this.y=this.bottom-this.size;
-    //     }
-    // }
     makeNewBullet(){
         const velocity = 20;
         const bulletSize = 20;
