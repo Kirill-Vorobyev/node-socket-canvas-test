@@ -5,14 +5,14 @@ Simple tank game tech demo to demonstrate node + socket.io + canvas
 
 ## Demo:
 https://node-tanks.herokuapp.com
-**Some changes/updates not present in this repo**
+#### Some changes/updates not present in this repo
 - Key press + hold input (WASD+Space)
 - Rotational movement
 - Faster update rate
 - Circular collisions
 - Better tank graphics
 
-#### About this repo:
+## About this repo:
 - Node + Express for file serving and game loop.
 - Socket.io for communication.
 - Canvas 2D as the local renderer.
