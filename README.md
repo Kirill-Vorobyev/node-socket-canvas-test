@@ -4,7 +4,7 @@
 Simple tank game tech demo to demonstrate node + socket.io + canvas
 
 ## Demo:
-https://node-tanks.herokuapp.com
+https://tanks.voro.dev
 #### Some changes/updates not present in this repo
 - Key press + hold input (WASD+Space)
 - Rotational movement
